@@ -16,7 +16,7 @@ jobs:
        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
      - name: build docker image and push to ecr repo
        run: |
-          $(sudo aws ecr get-login --no-include-email --region ap-south-1)
+          sudo $(aws ecr get-login --no-include-email --region ap-south-1)
           sudo docker build -t ${{ secrets.ECR_REPO_NAME }}/nodeapp:${{ env.RELEASE_VERSION  }} .
           sudo docker push ${{ secrets.ECR_REPO_NAME }}/nodeapp:${{ env.RELEASE_VERSION }}
        env:
