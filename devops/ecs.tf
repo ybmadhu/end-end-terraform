@@ -1,8 +1,8 @@
 resource "aws_ecs_cluster" "main" {
   name = "jms-cluster"
 }
-data "aws_ecr_repository" "nodeapp"{
-name = "nodeproj"
+data "aws_ecr_repository" "nodeapp" {
+  name = "nodeapp"
 }
 data "template_file" "cb_app" {
   template = file("./templates/ecs/cb_app.json.tpl")
